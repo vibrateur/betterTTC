@@ -50,17 +50,6 @@ public class WebServices {
     public static String[] usersOnline = new String[]{};
     
     public static void handshake() throws IOException, RateLimit {
-        TTC.logger.info("Starting handshake");
-        
-        TudbuTAPIV2.handshake(Minecraft.getMinecraft().getSession().getProfile().getId());
-        if(client != null) {
-            client.getSocket().close();
-            handler.remove(client);
-        }
-        
-        TTC.logger.info("Handshake passed");
-        
-        // Done!
     }
     
     private static void login() throws IOException, RateLimit {
