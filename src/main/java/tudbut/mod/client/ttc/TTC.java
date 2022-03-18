@@ -103,7 +103,6 @@ public class TTC {
             }
             catch (TCN.TCNException ignored) { }
         }
-        WebServices.doLogin();
         if(globalConfig.getSub("startup").getBoolean("show_credit")) {
             // Show the "TTC by TudbuT" message
             ThreadManager.run(() -> {
@@ -179,7 +178,6 @@ public class TTC {
             Lock lock = new Lock();
             while (b[0]) {
                 lock.lock(1000);
-                WebServices.trackPlay();
                 try {
                     // Only save if on main
                     if(AltControl.getInstance().mode != 1)
