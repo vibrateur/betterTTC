@@ -1,6 +1,4 @@
-# [Website](https://tudbut.de:83#ttc)
-
-TTC Client
+Better TTC Client
 ==========
 
 Only there for transparency, see license!
@@ -17,3 +15,5 @@ commands:
 
 
 The first client to have a SeedOverlay ( / Seed Overlay ) module. For free.
+
+TTC without api and more
