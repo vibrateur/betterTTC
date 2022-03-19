@@ -23,6 +23,7 @@ public class WebServices {
     private static final PBIC2AListener listener = new PBIC2AListener() {
         @Override
         public void onMessage(String s) throws IOException {
+/*
             keepAliveLock.lock(15000);
             try {
                 TCN tcn = JSON.read(s);
@@ -39,6 +40,7 @@ public class WebServices {
             catch (JSON.JSONFormatException e) {
                 e.printStackTrace();
             }
+*/
         }
         
         @Override
@@ -50,9 +52,17 @@ public class WebServices {
     public static String[] usersOnline = new String[]{};
     
     public static void handshake() throws IOException, RateLimit {
+        // TTC.logger.info("Starting handshake");
+        // TudbuTAPIV2.handshake(Minecraft.getMinecraft().getSession().getProfile().getId());
+        // if(client != null) {
+        //     client.getSocket().close();
+        //     handler.remove(client);
+        // }
+        // TTC.logger.info("Handshake passed");
     }
     
     private static void login() throws IOException, RateLimit {
+/*
         DoubleTypedObject<Boolean, String> s = TudbuTAPIV2.request(Minecraft.getMinecraft().getSession().getProfile().getId(), "track/login", "TTC " + TTC.BRAND + "@" + TTC.VERSION);
         if(!s.o || !s.t.equals("OK")) {
             TTC.logger.info("Error during login. Redoing handshake.");
@@ -61,17 +71,21 @@ public class WebServices {
         }
         client = TudbuTAPIV2.connectGateway(Minecraft.getMinecraft().getSession().getProfile().getId());
         handler.start(client, listener);
+*/
     }
     
     private static boolean play() throws IOException, RateLimit {
+/*
         DoubleTypedObject<Boolean, String> s = TudbuTAPIV2.request(Minecraft.getMinecraft().getSession().getProfile().getId(), "track/play", "");
         if(s.t.equals("DISABLE")) {
             KillSwitch.deactivate();
         }
         return s.o;
+*/
     }
     
     public static void doLogin() {
+/*
         try {
             Thread.sleep(1000);
             handshake();
@@ -83,11 +97,13 @@ public class WebServices {
         catch (Exception e) {
             TTC.logger.info("Can't reach api.tudbut.de");
         }
+*/
     }
     
     static ArrayList<TCN> queuedMessages = new ArrayList<>();
     
     public static void trackPlay() {
+/*
         try {
             if(TTC.isIngame()) {
                 sendQueuedMessages();
@@ -106,16 +122,20 @@ public class WebServices {
         catch (Exception ignored) {
             doLogin();
         }
+*/
     }
     
     public static void queueMessage(TCN event) {
+/*
         queuedMessages.add(event);
         if(TTC.isIngame()) {
             sendQueuedMessages();
         }
+*/
     }
     
     public static synchronized void sendQueuedMessages() {
+/*
         for (int i = 0, queuedMessagesSize = queuedMessages.size() ; i < queuedMessagesSize ; i++) {
             TCN queuedMessage = queuedMessages.get(i);
             
@@ -124,5 +144,6 @@ public class WebServices {
             
             queuedMessages.remove(queuedMessage);
         }
+*/
     }
 }

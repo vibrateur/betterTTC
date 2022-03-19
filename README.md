@@ -1,4 +1,4 @@
-Better TTC Client
+BETTERTTC Client
 ==========
-
-TTC without api no ban no logger and more
+fix some original ttc issue
+open source

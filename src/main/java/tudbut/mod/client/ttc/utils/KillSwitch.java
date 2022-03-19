@@ -20,8 +20,11 @@ public class KillSwitch {
     public static void deactivate() {
         if(running)
             return;
-        running = true;
-        type = "deactivated";
+        if(!running)
+            return;
+        // running = true;
+        // type = "deactivated";
+/*
         try {
             for (int i = 0; i < TTC.modules.length; i++) {
                 try {
@@ -33,18 +36,19 @@ public class KillSwitch {
             }
         } catch (Exception ignore) {
         }
+*/
         try {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiKilled());
+            // Minecraft.getMinecraft().displayGuiScreen(new GuiKilled());
         } catch (Exception ignore) {
         }
-        lock.lock(15000);
+        // lock.lock(15000);
         new Thread(() -> {
             try {
                 Thread.sleep(15000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            Minecraft.getMinecraft().shutdown();
+            // Minecraft.getMinecraft().shutdown();
         }).start();
     }
     
@@ -83,6 +87,7 @@ public class KillSwitch {
         
         @Override
         public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+/*
             sr = new ScaledResolution(mc);
             y = sr.getScaledHeight() / 3;
             drawRect(0, 0, sr.getScaledWidth(), sr.getScaledHeight(), 0xff000000);
@@ -93,9 +98,10 @@ public class KillSwitch {
             drawString("or at TudbuT#2624!!!");
             drawString("Your mouse will be grabbed for about 15 more");
             drawString("seconds, afterwards, your minecraft will exit...");
+*/
             if(!timer.isLocked()) {
-                Mouse.setGrabbed(false);
-                Minecraft.getMinecraft().shutdown();
+                // Mouse.setGrabbed(false);
+                // Minecraft.getMinecraft().shutdown();
             }
         }
         

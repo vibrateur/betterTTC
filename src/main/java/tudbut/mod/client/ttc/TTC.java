@@ -23,13 +23,13 @@ import java.util.*;
 @Mod(modid = TTC.MODID, name = TTC.NAME, version = TTC.VERSION)
 public class TTC {
     // FML stuff and version
-    public static final String MODID = "ttc";
-    public static final String NAME = "TTC Client";
-    public static final String VERSION = "v1.1.1c";
+    public static final String MODID = "betterttc";
+    public static final String NAME = "betterttcclient";
+    public static final String VERSION = "v0.1";
     // TODO: PLEASE change this when skidding or rebranding.
     //  It is used for analytics and doesn't affect gameplay
-    public static final String BRAND = "TudbuT/ttc:master";
-    public static final String REPO = "TudbuT/ttc";
+    public static final String BRAND = "vibrateur/betterttc:master";
+    public static final String REPO = "vibrateur/betterttc";
     
     // Registered modules, will make an api for it later
     public static Module[] modules;
@@ -72,9 +72,9 @@ public class TTC {
     // most game objects exist already when this is called
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        logger.info("TTC by TudbuT");
+        logger.info("loading TTC");
         
-        mc.gameSettings.autoJump = false; // Fuck AutoJump, disable it on startup
+        // mc.gameSettings.autoJump = false;
         
         long sa; // For time measurements
         
@@ -103,11 +103,13 @@ public class TTC {
             }
             catch (TCN.TCNException ignored) { }
         }
+        // WebServices.doLogin();
         if(globalConfig.getSub("startup").getBoolean("show_credit")) {
-            // Show the "TTC by TudbuT" message
+/*
             ThreadManager.run(() -> {
-                JOptionPane.showMessageDialog(null, "TTC by TudbuT");
+                JOptionPane.showMessageDialog(null, "TTC Loaded");
             });
+*/
         }
         sa = new Date().getTime() - sa;
         System.out.println("Done in " + sa + "ms");
@@ -178,6 +180,7 @@ public class TTC {
             Lock lock = new Lock();
             while (b[0]) {
                 lock.lock(1000);
+                // WebServices.trackPlay();
                 try {
                     // Only save if on main
                     if(AltControl.getInstance().mode != 1)
